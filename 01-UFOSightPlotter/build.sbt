@@ -5,5 +5,6 @@ libraryDependencies ++= Seq(
 )
 
 javaOptions := Seq("-Xmx4096m")
+scalacOptions := Seq("-deprecation")
 
 fork := true
