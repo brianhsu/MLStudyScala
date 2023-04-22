@@ -1,0 +1,9 @@
+.git
+target/
+.idea
+project/target
+*.log
+*.swp
+.DS_Store
+.bsp/
+.attach*
