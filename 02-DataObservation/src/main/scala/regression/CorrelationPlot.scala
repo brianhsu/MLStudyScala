@@ -36,7 +36,7 @@ object CorrelationPlot {
     val maleHeights = allData.filter(_.gender == Male).map(_.height)
     val maleWeights = allData.filter(_.gender == Male).map(_.weight)
     val maleScatter = createScatterChart(ScatterLayer(maleHeights, maleWeights, "男性身高體重"))
-    BitmapEncoder.saveBitmap(allGenderScatter, "images/maleScatter.png", BitmapFormat.PNG)
+    BitmapEncoder.saveBitmap(maleScatter, "images/maleScatter.png", BitmapFormat.PNG)
 
     // 針對女性身高體重進行繪圖，可以看出似乎身高與體重有相關性。
     // 也就是說，我們之後應該可以用線性迴歸的方式，以身高預測體重。
@@ -44,7 +44,7 @@ object CorrelationPlot {
     val femaleHeights = allData.filter(_.gender == Female).map(_.height)
     val femaleWeights = allData.filter(_.gender == Female).map(_.weight)
     val femaleScatter = createScatterChart(ScatterLayer(femaleHeights, femaleWeights, "女性身高體重", Some(Color.RED)))
-    BitmapEncoder.saveBitmap(allGenderScatter, "images/femaleScatter.png", BitmapFormat.PNG)
+    BitmapEncoder.saveBitmap(femaleScatter, "images/femaleScatter.png", BitmapFormat.PNG)
 
     // 針對男性女性分組的身高體重進行繪圖，可以看出似乎身高與體重有相關性，
     // 且男女性似組別似乎在圖上是有明顯的分區的。
@@ -57,7 +57,7 @@ object CorrelationPlot {
       ScatterLayer(maleHeights, maleWeights, "男性身高體重"),
       ScatterLayer(femaleHeights, femaleWeights, "女性身高體重")
     )
-    BitmapEncoder.saveBitmap(allGenderScatter, "images/groupScatter.png", BitmapFormat.PNG)
+    BitmapEncoder.saveBitmap(groupScatter, "images/groupScatter.png", BitmapFormat.PNG)
 
     new SwingWrapper(List(allGenderScatter, maleScatter, femaleScatter, groupScatter).asJava).displayChartMatrix()
   }
@@ -84,6 +84,7 @@ object CorrelationPlot {
 
     chart.getStyler.setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Scatter)
     chart
+
   }
 
 

@@ -40,7 +40,7 @@ object DistributionPlot {
     // 這張圖已經看不太出來常態分佈的感覺了
     val histogram001Inch = HistogramLayer(rows.map(_.height), 0.001)
     val histogramChart001Inch = plot(List(histogram001Inch))
-    BitmapEncoder.saveBitmap(histogramChart5Inch, "images/histogramChart001Inch.png", BitmapFormat.PNG)
+    BitmapEncoder.saveBitmap(histogramChart001Inch, "images/histogramChart001Inch.png", BitmapFormat.PNG)
 
     // 製作以 1 英吋為單位的身高密度圖，可以觀察到接近常態分佈，但頂部似乎有些平，
     // 這可能代表資料有隱藏的結構。
@@ -67,7 +67,7 @@ object DistributionPlot {
     val maleHeightHistogram = HistogramLayer(maleHeight, 1, "男性身高")
     val femaleHeightHistogram = HistogramLayer(femaleHeight, 1, "女性身高")
     val heightByGender = plot(List(maleHeightHistogram, femaleHeightHistogram), CategorySeriesRenderStyle.Area)
-    BitmapEncoder.saveBitmap(histogramChart5Inch, "images/heightByGender.png", BitmapFormat.PNG)
+    BitmapEncoder.saveBitmap(heightByGender, "images/heightByGender.png", BitmapFormat.PNG)
 
     // 使用 NSPL 繪制男女分組的身高密度圖
     // 檔案儲存在 images/genderHeightDensityInNSPL.png 當中
@@ -87,13 +87,13 @@ object DistributionPlot {
     val weightByGender = plot(List(maleWeightHistogram, femaleWeightHistogram), CategorySeriesRenderStyle.Area)
     BitmapEncoder.saveBitmap(weightByGender, "images/weightByGender.png", BitmapFormat.PNG)
 
-    // 使用 NSPL 繪制男女分組的身高密度圖
+    // 使用 NSPL 繪制男女分組的體重密度圖
     // 檔案儲存在 images/genderWeightDensityInNSPL.png 當中
     val weightDensityInNPSL = xyplot(
       density(maleWeight.toIndexedSeq, 5) -> line(color = Color.BLUE),
       density(femaleWeight.toIndexedSeq, 5) -> line(color = Color.RED),
     ) {
-      par.withXLab("體重").withYLab("密度").withMain("10000 人身體重度圖")
+      par.withXLab("體重").withYLab("密度").withMain("10000 人身體重密度圖")
     }
     pngToFile(new File("images/genderWeightDensityInNSPL.png"), weightDensityInNPSL)
 
