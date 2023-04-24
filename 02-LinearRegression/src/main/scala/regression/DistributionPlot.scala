@@ -8,7 +8,9 @@ import regression.model.Record
 import regression.plot.HistogramLayer
 
 
-
+/**
+ * 用來觀察資料集內的身高體重分佈的作圖
+ */
 object DistributionPlot {
 
   def main(args: Array[String]): Unit = {
