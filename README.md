@@ -21,9 +21,9 @@
 
 以下為目前的進度：
 
-1. [01-DataCleanning 資料清理](01-DataCleanning/README.md)
-2. [02-DataObservation 資料觀察](02-DataObservation/README.md)
-3. [03-LinearRegression 線性迴歸預測](03-LinearRegression/README.md)
+1. [01-DataCleanning 資料清理](01-DataCleanning/)
+2. [02-DataObservation 資料觀察](02-DataObservation/)
+3. [03-LinearRegression 線性迴歸預測](03-LinearRegression/)
 
 程式碼編譯方式
 ---------------
