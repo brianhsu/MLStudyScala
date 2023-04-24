@@ -10,6 +10,7 @@ import regression.model.Record
 import regression.plot.HistogramLayer
 
 import java.io.File
+import scala.jdk.CollectionConverters._
 
 /**
  * 用來觀察資料集內的身高體重分佈的作圖
@@ -96,12 +97,13 @@ object DistributionPlot {
     }
     pngToFile(new File("images/genderWeightDensityInNSPL.png"), weightDensityInNPSL)
 
-    new SwingWrapper(histogramChart1Inch).displayChart()
-    new SwingWrapper(histogramChart5Inch).displayChart()
-    new SwingWrapper(histogramChart001Inch).displayChart()
-    new SwingWrapper(densityChart1Inch).displayChart()
-    new SwingWrapper(heightByGender).displayChart()
-    new SwingWrapper(weightByGender).displayChart()
+    new SwingWrapper(
+      List(
+        histogramChart1Inch, histogramChart5Inch,
+        histogramChart001Inch, densityChart1Inch,
+        heightByGender, weightByGender
+      ).asJava
+    ).displayChartMatrix()
   }
 
 
